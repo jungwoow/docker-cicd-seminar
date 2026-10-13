@@ -16,6 +16,12 @@ def test_health():
     assert response.json() == {"message": "hello docker"}
 
 
+def test_version():
+    response = client.get("/version")
+    assert response.status_code == 200
+    assert response.json() == {"version": "v1", "author": "권정우"}
+
+
 def test_database_not_configured(monkeypatch):
     monkeypatch.delenv("DATABASE_URL", raising=False)
     response = client.get("/db")

@@ -11,6 +11,11 @@ def health():
     return {"message": "hello docker"}
 
 
+@app.get("/version")
+def version():
+    return {"version": "v2", "author": "권정우"}
+
+
 @app.get("/db")
 def database_health():
     url = os.getenv("DATABASE_URL")
